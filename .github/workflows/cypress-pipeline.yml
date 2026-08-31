@@ -31,7 +31,7 @@ jobs:
                     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
             #Upload de relatórios Mochawesome
             - name: Upload Mochawesome Report
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v7
               with:
                     name: mochawesome-report 
                     path: cypress\reports\html
