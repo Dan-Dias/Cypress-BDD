@@ -13,7 +13,6 @@ module.exports = defineConfig({
       reportTitle: 'Projeto Cucumber',
       reportPageTitle: 'Projeto Cucumber',
     },
-    baseUrl: "https://automationpratice.com.br/",
     specPattern: "cypress/e2e/features/*.feature",
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
