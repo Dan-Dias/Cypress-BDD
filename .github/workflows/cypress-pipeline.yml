@@ -29,3 +29,9 @@ jobs:
               env: 
                     #Variáveis de ambiente para o Cypress
                     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+            #Upload de relatórios Mochawesome
+            - name: Upload Mochawesome Report
+              uses: actions/upload-artifact@v3
+              with:
+                    name: mochawesome-report 
+                    path: cypress\reports\html
