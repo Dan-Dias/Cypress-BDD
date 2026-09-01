@@ -1,38 +1,38 @@
-#nome da pipeline
-name: Run Basic Testers - Schedule
+# #nome da pipeline
+# name: Run Basic Testers - Schedule
 
-#Em que momento ela será executada
-on: 
-  schedule:
-    - cron: '0 20 * * 1-5' #Executa todos os dias da segunda à sexta-feira às 20:00
+# #Em que momento ela será executada
+# on: 
+#   schedule:
+#     - cron: '0 20 * * 1-5' #Executa todos os dias da segunda à sexta-feira às 20:00
 
-jobs: 
-    #O que será feito na pipeline, só teremos um job
-    cypress-run:
-        #máquina que será executada
-        runs-on: ubuntu-latest
+# jobs: 
+#     #O que será feito na pipeline, só teremos um job
+#     cypress-run:
+#         #máquina que será executada
+#         runs-on: ubuntu-latest
 
-        #Passo a passo para rodar os testes
-        steps:
-            #Primeiro passo é fazer o checkout do código
-            - name: Checkout/Clone do projeto
-              uses: actions/checkout@v7
-            - name: Instalando o novo node
-              uses: actions/setup-node@v7
-              with:
-                    node-version: 24
-                    cache: npm
-            - name: Run testers
-              uses: cypress-io/github-action@v7
-              with:
-                    record: true
-              env: 
-                    #Variáveis de ambiente para o Cypress
-                    CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-            #Upload de relatórios Mochawesome
-            - name: Upload Mochawesome Report
-              if: always()
-              uses: actions/upload-artifact@v7
-              with:
-                    name: mochawesome-report 
-                    path: cypress/reports/html
+#         #Passo a passo para rodar os testes
+#         steps:
+#             #Primeiro passo é fazer o checkout do código
+#             - name: Checkout/Clone do projeto
+#               uses: actions/checkout@v7
+#             - name: Instalando o novo node
+#               uses: actions/setup-node@v7
+#               with:
+#                     node-version: 24
+#                     cache: npm
+#             - name: Run testers
+#               uses: cypress-io/github-action@v7
+#               with:
+#                     record: true
+#               env: 
+#                     #Variáveis de ambiente para o Cypress
+#                     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+#             #Upload de relatórios Mochawesome
+#             - name: Upload Mochawesome Report
+#               if: always()
+#               uses: actions/upload-artifact@v7
+#               with:
+#                     name: mochawesome-report 
+#                     path: cypress/reports/html
